@@ -111,6 +111,55 @@ nav a:hover::after {
   gap: 10px;
 }
 
+.availability-short {
+  display: none;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.language-toggle {
+  height: 38px;
+  padding: 0 13px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  font: 500 0.66rem/1 "DM Mono", monospace;
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
+}
+
+.language-toggle:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
+.language-toggle svg {
+  width: 15px;
+  height: 15px;
+  margin-right: 2px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+}
+
+.language-current {
+  font-weight: 700;
+}
+
+.language-next,
+.language-divider {
+  opacity: 0.42;
+}
+
 .status-dot {
   width: 8px;
   height: 8px;
@@ -141,6 +190,10 @@ nav a:hover::after {
   letter-spacing: -0.07em;
   max-width: 1200px;
   margin: 5vh 0;
+}
+
+html[lang="fr"] .hero-title {
+  font-size: clamp(3.7rem, 7.2vw, 7.5rem);
 }
 
 .hero-title .line {
@@ -966,6 +1019,10 @@ footer {
   .site-header { height: 82px; }
   nav { display: none; }
 
+  .header-actions {
+    gap: 14px;
+  }
+
   .hero {
     min-height: calc(100svh - 82px);
     padding: 50px 0 40px;
@@ -1004,17 +1061,41 @@ footer {
 }
 
 @media (max-width: 650px) {
-  .availability {
-    font-size: 0;
+  .availability-long {
+    display: none;
   }
 
-  .availability::after {
-    content: "Available";
+  .availability-short {
+    display: inline;
     font-size: 0.68rem;
+  }
+
+  .header-actions {
+    gap: 10px;
+  }
+
+  .language-toggle {
+    width: 38px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .language-toggle svg {
+    margin: 0;
+  }
+
+  .language-current,
+  .language-next,
+  .language-divider {
+    display: none;
   }
 
   .hero-title {
     font-size: clamp(2.85rem, 13.2vw, 4.8rem);
+  }
+
+  html[lang="fr"] .hero-title {
+    font-size: clamp(2.55rem, 11.8vw, 4.3rem);
   }
 
   .hero-bottom p {
